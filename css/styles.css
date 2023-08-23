@@ -19,8 +19,31 @@
         }
 
         .email {
-            font-size: 14px;
+            font-size: 13px;
             margin-bottom: 5px;
+        }
+
+        /* Custom CSS for default paragraph font size */
+        p:not(.small-font) {
+            font-size: 16px; /* Set the default font size */
+        }
+
+        .small-font {
+            font-size: 11px; /* Adjust the font size as needed */
+        }
+
+        .equation-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .equation {
+            flex: 1;
+        }
+
+        .equation-label {
+            margin-left: 10px;
+            font-size: 18px;
         }
 
 		.equation {

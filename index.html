@@ -28,51 +28,54 @@
 						<p class="email"><a href="mailto:w.wojtak@dei.uminho.pt">w.wojtak@dei.uminho.pt</a></p>
 					</div>
 					<div class="affiliation">
-						<p>Research Centre Algoritmi, University of Minho, Guimarães, Portugal</p>
-						<p>Research Centre of Mathematics, University of Minho, Guimarães, Portugal</p>
-						<p>Centro de Computação Gráfica, Guimarães, Portugal</p>
+						<p class="small-font">Research Centre Algoritmi, University of Minho, Guimarães, Portugal</p>
+						<p class="small-font">Research Centre of Mathematics, University of Minho, Guimarães, Portugal</p>
+						<p class="small-font">Centro de Computação Gráfica, Guimarães, Portugal</p>
 					</div>
 					<div class="author">
 						<p><strong>Estela Bicho</strong></p>
 					</div>
 					<div class="affiliation">
-						<p>Research Centre Algoritmi, University of Minho, Guimarães, Portugal</p>
+						<p class="small-font">Research Centre Algoritmi, University of Minho, Guimarães, Portugal</p>
 					</div>
 					<div class="author">
 						<p><strong>Wolfram Erlhagen</strong></p>
 					</div>
 					<div class="affiliation">
-						<p>Research Centre of Mathematics, University of Minho, Guimarães, Portugal</p>
+						<p class="small-font">Research Centre of Mathematics, University of Minho, Guimarães, Portugal</p>
 					</div>
 				</section>
 
 				<section>
-					<h3 class="slide-title">Neural Field Equations</h3>
+					<h3 class="slide-title">Equation Example</h3>
 					<div class="slide-content">
-					<div class="equation">
-						<p>We solve the canonical Amari equation defined on a 1D finite domain \( \Omega \)</p>
-						<div>
-							\[
-							\begin{aligned}
-							\frac{\partial u(x,t)}{\partial t} = -u(x,t) + \int_{\Omega} w(|x-y|)f(u(y,t)-\kappa) \, dy, & \quad (x, t) \; {\rm in} \; \Omega \times M, \\
-							u(x, 0) = u_0, & \quad x \; {\rm in} \; \Omega,
-							\end{aligned}
-							\]
+						<div class="equation-container">
+							<div class="equation">
+								<p>We solve the canonical Amari equation defined on a 1D finite domain \( \Omega \)</p>
+								\[
+								\begin{aligned}
+								\frac{\partial u(x,t)}{\partial t} = -u(x,t) + \int_{\Omega} w(|x-y|)f(u(y,t)-\kappa) \, dy, & \quad (x, t) \; {\rm in} \; \Omega \times M, \\
+								u(x, 0) = u_0, & \quad x \; {\rm in} \; \Omega,
+								\end{aligned}
+								\]
+							</div>
+							<p class="equation-label">(1)</p>
 						</div>
-					</div>
 
-					<div class="equation">
-						<p>The initial condition \( u_0 \) is given by</p>
-						<div>
-							\[
-							u_0 = u(x,0) =  A_{0}e^{ \left( - x^2 / \sigma_{0}^{2} \right)},
-							\]
+						<div class="equation-container">
+							<div class="equation">
+								<p>The initial condition \( u_0 \) is given by</p>
+								\[
+								u_0 = u(x,0) = A_{0}e^{ \left( - x^2 / \sigma_{0}^{2} \right)}
+								\]
+							</div>
+							<p class="equation-label">(2)</p>
 						</div>
-						<p> and the boundary conditions are periodic. <p>
-						<p> \(M = [0, T]\) defines the time interval for the activity integration. </p>
+						<p>And the boundary conditions are periodic.</p>
+						<p>\(M = [0, T]\) defines the time interval for the activity integration.</p>
 					</div>
-						</div>
 				</section>
+
 				<section>
 					<h3 class="slide-title">Neural Field Equations</h3>
 					<div class="slide-content">
