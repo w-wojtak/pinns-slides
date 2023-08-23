@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Presentation</title>
+
+		<style>
+        /* Apply custom CSS styles for the title slide */
+        .title-slide {
+            font-size: 18px;
+        }
+
+        .title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .author {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .affiliation {
+            font-size: 10px;
+            margin-bottom: 1px;
+        }
+
+        .email {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+		.equation {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .equation div {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        /* Style slide titles */
+        .slide-title {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        /* Style slide content */
+        .slide-content {
+            margin-top: 60px; /* Adjust the margin to create space below the title */
+        }
+
+
+
+    	</style>
+
+		    <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    		</script>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/simple.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<!-- Title Slide -->
+					<section class="title-slide">
+					<h1 class="title">Solving Neural Field Equations using Physics Informed Neural Networks</h1>
+					<div class="author">
+						<p>Weronika Wojtak</p>
+						<p class="email"><a href="mailto:w.wojtak@dei.uminho.pt">w.wojtak@dei.uminho.pt</a></p>
+					</div>
+					<div class="affiliation">
+						<p>Research Centre Algoritmi, University of Minho, Guimarães, Portugal</p>
+						<p>Research Centre of Mathematics, University of Minho, Guimarães, Portugal</p>
+						<p>Centro de Computação Gráfica, Guimarães, Portugal</p>
+					</div>
+					<div class="author">
+						<p>Estela Bicho</p>
+					</div>
+					<div class="affiliation">
+						<p>Research Centre Algoritmi, University of Minho, Guimarães, Portugal</p>
+					</div>
+					<div class="author">
+						<p>Wolfram Erlhagen</p>
+					</div>
+					<div class="affiliation">
+						<p>Research Centre of Mathematics, University of Minho, Guimarães, Portugal</p>
+					</div>
+				</section>
+				<section>
+					<h3 class="slide-title">Neural Field Equations</h3>
+					<div class="slide-content">
+					<div class="equation">
+						<p>We solve the canonical Amari equation defined on a 1D finite domain \( \Omega \)</p>
+						<div>
+							\[
+							\begin{aligned}
+							\frac{\partial u(x,t)}{\partial t} = -u(x,t) + \int_{\Omega} w(|x-y|)f(u(y,t)-\kappa) \, dy, & \quad (x, t) \; {\rm in} \; \Omega \times M, \\
+							u(x, 0) = u_0, & \quad x \; {\rm in} \; \Omega,
+							\end{aligned}
+							\]
+						</div>
+					</div>
+
+					<div class="equation">
+						<p>The initial condition \( u_0 \) is given by</p>
+						<div>
+							\[
+							u_0 = u(x,0) =  A_{0}e^{ \left( - x^2 / \sigma_{0}^{2} \right)},
+							\]
+						</div>
+						<p> and the boundary conditions are periodic. <p>
+						<p> \(M = [0, T]\) defines the time interval for the activity integration. </p>
+					</div>
+						</div>
+				</section>
+				<section>
+					<h3 class="slide-title">Neural Field Equations</h3>
+					<div class="slide-content">
+
+					<div class="equation">
+						<p>The connectivity function \( w \) is chosen as a scaled version of an oscillatory connectivity function</p>
+						<div>
+							\[
+							w_{osc}(x) = A_{osc}e^{-b \vert c x \vert} (b \sin \vert c x \vert + \cos (c x)),
+							\]
+						</div>
+					</div>
+						</div>
+				</section>
+			</div>
+		</div>
+
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
