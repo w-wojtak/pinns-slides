@@ -44,6 +44,16 @@
             margin-top: 60px; /* Adjust the margin to create space below the title */
         }
 
+        .slide-content ul {
+            list-style-type: disc; /* or "decimal" for ordered list */
+            padding-left: 20px;
+            font-size: 18px;
+        }
+
+        .slide-content li {
+            margin-bottom: 10px;
+        }
+
         /* Custom CSS for the image caption */
         .caption {
             text-align: center;
