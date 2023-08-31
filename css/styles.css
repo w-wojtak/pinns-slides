@@ -1,4 +1,25 @@
 /* Apply custom CSS styles for the title slide */
+
+        .twocolumn {
+           display: grid;
+           grid-template-columns: 1.5fr 1.5fr;
+           grid-gap: 60px;
+           text-align: left;
+        }
+
+          .twocolumn h3 {
+            font-size: 1.0em; /* Adjust the font size as needed */
+          }
+
+          .twocolumn ul {
+            font-size: 0.7em; /* Adjust the font size as needed */
+          }
+
+          .twocolumn ul li {
+            margin-bottom: 10px; /* Adjust the margin as needed to increase spacing */
+          }
+
+
         .title-slide {
             font-size: 18px;
         }
