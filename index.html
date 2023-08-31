@@ -77,14 +77,7 @@
 					<h3 class="slide-title">Neural Field Equations</h3>
 					<div class="slide-content">
 
-					<div class="equation">
-						<p>The connectivity function \( w \) is chosen as a scaled version of an oscillatory connectivity function</p>
-						<div>
-							\[
-							w_{osc}(x) = A_{osc}e^{-b \vert c x \vert} (b \sin \vert c x \vert + \cos (c x)),
-							\]
-						</div>
-					</div>
+
 						</div>
 				</section>
 
@@ -101,7 +94,7 @@
 
 
 				<section>
-					<h3 class="slide-title">Equation Example</h3>
+					<h3 class="slide-title">Amari Equation</h3>
 					<div class="slide-content">
 						<div class="equation-container">
 							<div class="equation">
@@ -127,6 +120,19 @@
 						</div>
 						<p>And the boundary conditions are periodic.</p>
 						<p>\(M = [0, T]\) defines the time interval for the activity integration.</p>
+
+						<div class="equation-container">
+							<div class="equation">
+								<p>The oscillatory connectivity function \( w \) is given by</p>
+								<div>
+									\[
+									w_{osc}(x) = A_{osc}e^{-b \vert c x \vert} (b \sin \vert c x \vert + \cos (c x)).
+									\]
+								</div>
+							</div>
+							<p class="equation-label">(3)</p>
+						</div>
+
 					</div>
 				</section>
 
@@ -154,6 +160,21 @@
 					</div>
 				</section>
 
+
+				<section>
+					<h3 class="slide-title">Future work</h3>
+					<div class="slide-content">
+						<ul>
+						  <li>Add a normalization layer to mitigate the restriction imposed by the tanh activation function.</li>
+						  <li>Adjust hyperparameters (e.g., number of layers, neurons, learning rate) for improved solution accuracy.</li>
+						  <li>Handle NFEs with inputs, leveraging PINN's transfer learning.</li>
+						  <li>Address the inverse problem, inferring NFE parameters from potentially noisy data.</li>
+						  <li>Extend the study to NFEs in two or more spatial dimensions or on surfaces with complex geometries.</li>
+						</ul>
+					</div>
+				</section>
+
+
 				<section>
 					<h3 class="slide-title">References</h3>
 					<div class="slide-content">
@@ -165,6 +186,9 @@
 						</ul>
 					</div>
 				</section>
+
+
+
 
 
 			</div>
