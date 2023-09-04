@@ -131,14 +131,14 @@
 					<div class="slide-content">
 								<ul>
 									<li>Designed to solve problems involving Partial Differential Equations (PDEs).</li>
-									<li>Consist of two parts: a deep learning network called an approximator or
-										a surrogate network, and a residual network encoding the governing PDEs.</li>
-									<li>The surrogate network is trained to provide an approximate solution
-										at a given point in the simulation domain (also called collocation point).</li>
-									<li>The residual network receives the output of the surrogate network and
-										calculates a residual value (also called loss function).</li>
+									<li>The idea is very simple: add the known differential equations directly into the loss function when training the neural network.</li>
+<!--									<li>Consist of two parts: a deep learning network called an approximator or-->
+<!--										a surrogate network, and a residual network encoding the governing PDEs.</li>-->
+<!--									<li>The surrogate network is trained to provide an approximate solution-->
+<!--										at a given point in the simulation domain (also called collocation point).</li>-->
+<!--									<li>The residual network receives the output of the surrogate network and-->
+<!--										calculates a residual value (also called loss function).</li>-->
 								</ul>
-						TODO: add image
 					</div>
 				</section>
 
