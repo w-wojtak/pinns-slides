@@ -24,7 +24,7 @@
 				<section class="title-slide">
 					<h1 class="title">Solving Neural Field Equations using Physics Informed Neural Networks</h1>
 					<div class="author">
-						<p><strong>Weronika Wojtak</strong></p>
+						<p style="font-size:110%; "><strong>Weronika Wojtak</strong></p>
 						<p class="email"><a href="mailto:w.wojtak@dei.uminho.pt">w.wojtak@dei.uminho.pt</a></p>
 					</div>
 					<div class="affiliation">
@@ -33,18 +33,72 @@
 						<p class="small-font">Centro de Computação Gráfica, Guimarães, Portugal</p>
 					</div>
 					<div class="author">
-						<p><strong>Estela Bicho</strong></p>
+						<p style="font-size:110%; "><strong>Estela Bicho</strong></p>
 					</div>
 					<div class="affiliation">
 						<p class="small-font">Research Centre Algoritmi, University of Minho, Guimarães, Portugal</p>
 					</div>
 					<div class="author">
-						<p><strong>Wolfram Erlhagen</strong></p>
+						<p style="font-size:110%; "><strong>Wolfram Erlhagen</strong></p>
 					</div>
 					<div class="affiliation">
 						<p class="small-font">Research Centre of Mathematics, University of Minho, Guimarães, Portugal</p>
 					</div>
 				</section>
+
+
+
+				<section>
+					<h3 class="slide-title">Neural Field Equations</h3>
+					<div class="slide-content">
+								<ul>
+									<li>Describe the large-scale spatio-temporal dynamics of neuronal populations in the cortex.</li>
+									<li>Typically formalized by integro-differential equations (IDEs):</li>
+									<div class="equation">
+										\[
+										\frac{\partial u(x,t)}{\partial t} = -u(x,t) + \int_{\Omega} w(|x-y|)f(u(y,t)-\kappa) \, dy
+										\]
+									</div>
+									<li>Applications in neuroscience and robotics.</li>
+									<li>TODO: add images</li>
+								</ul>
+					</div>
+				</section>
+
+
+				<section>
+					<h3 class="slide-title">Neural Field Equations</h3>
+					  <div class="slide-content">
+						  <p style="font-size:50%; margin-bottom: 2cm;"> The mathematical analysis: the existence and stability of <strong>localized activation patterns</strong>,<br>
+							  believed to represent a basis for cortical information processing.</p>
+						<video width="640" height="360" controls>
+						  <source src="Amari_input_bump.mp4" type="video/mp4">
+						  Your browser does not support the video tag.
+						</video>
+					  </div>
+				</section>
+
+
+				<section>
+					<h3 class="slide-title">Neural Field Equations</h3>
+					  <div class="slide-content">
+						  <p style="font-size:55%; margin-bottom: 1cm;"> In general, no closed-form expressions can be
+							  found for these patterns<br> so the solutions must be <strong>approximated numerically.</strong></p>
+
+						  <p style="font-size:55%; margin-bottom: 1cm;"> This requires significant computational effort,<br>
+							  mostly due to the discretization of the <strong>spatial convolution term.</strong></p>
+
+						  <p style="font-size:55%; margin-bottom: 1cm;"> Many approaches proposed, including <strong>collocation techniques, <br>
+							  Galerkin schemes, low-rank methods, quadrature rules.</strong></p>
+
+						  <p style="font-size:55%; margin-bottom: 1cm;"> One of the most efficient ways: use of <strong>Fast Fourier Transforms (FFTs).</strong></p>
+
+						  <p style="font-size:55%; margin-bottom: 2cm;"> Motivated by <strong>the rise of scientific machine learning (SciML)</strong>,<br>
+							  we look for a new approach to solving this kind of equation.</p>
+
+					  </div>
+				</section>
+
 
 				<section>
 				  <div class="twocolumn">
@@ -72,25 +126,64 @@
 				</section>
 
 
-
 				<section>
-					<h3 class="slide-title">Neural Field Equations</h3>
+					<h3 class="slide-title">Physics informed neural networks (PINNs)</h3>
 					<div class="slide-content">
+								<ul>
+									<li>Designed to solve problems involving Partial Differential Equations (PDEs).</li>
+									<li>Consist of two parts: a deep learning network called an approximator or
+										a surrogate network, and a residual network encoding the governing PDEs.</li>
+									<li>The surrogate network is trained to provide an approximate solution
+										at a given point in the simulation domain (also called collocation point).</li>
+									<li>The residual network receives the output of the surrogate network and
+										calculates a residual value (also called loss function).</li>
+								</ul>
+						TODO: add image
+					</div>
+				</section>
 
-
-						</div>
+				<section>
+					<h3 class="slide-title">Physics informed neural networks (PINNs)</h3>
+					<div class="slide-content">
+<!--						Consist of two parts:-->
+								<ul>
+<!--									<li>Consist of two parts: a deep learning network called an approximator or-->
+<!--										a surrogate network, and a residual network encoding the governing PDEs.</li>-->
+									<li>The surrogate network is trained to provide an approximate solution
+										at a given point in the simulation domain (also called collocation point).</li>
+									<li>The residual network receives the output of the surrogate network and
+										calculates a residual value (also called loss function).</li>
+								</ul>
+						TODO: add image
+					</div>
 				</section>
 
 
 				<section>
-					<h3 class="slide-title">Neural Field Equations</h3>
-					  <div class="slide-content">
-						<video width="640" height="360" controls>
-						  <source src="Amari_input_bump.mp4" type="video/mp4">
-						  Your browser does not support the video tag.
-						</video>
-					  </div>
+					<h3 class="slide-title">Physics informed neural networks (PINNs)</h3>
+					<div class="slide-content">
+						<p style="font-size:55%;"> PINNs can solve differential equations expressed in the form:</p>
+									<div class="equation">
+										\[
+										\mathcal{F}(u(z); \gamma) = f(z)  \quad z \; {\rm in} \; \Omega, \\
+										\quad \\
+										\mathcal{B}(u(z)) = g(z) \quad z \; {\rm in} \; \partial \Omega,
+										\]
+									</div>
+						<p style="font-size:55%;"> defined on the domain \( \Omega \subset \mathbb{R} \) with the boundary
+							\( \partial \Omega\), where:</p>
+							<ul>
+								<li>\(z=[x_1, \ldots, x_{d-1}; t]\) indicates the space-time coordinate vector,</li>
+								<li>\(u\) represents the unknown solution,</li>
+								<li>\(\gamma\) are the parameters of the governing equation,</li>
+								<li>\(f\) is the function identifying the data of the problem,</li>
+								<li> \( \mathcal{F}\) is the non-linear differential operator.</li>
+							</ul>
+					</div>
 				</section>
+
+
+
 
 
 				<section>
@@ -98,7 +191,7 @@
 					<div class="slide-content">
 						<div class="equation-container">
 							<div class="equation">
-								<p>We solve the canonical Amari equation defined on a 1D finite domain \( \Omega \)</p>
+								<p style="font-size:120%;">We solve the canonical Amari equation defined on a 1D finite domain \( \Omega \)</p>
 								\[
 								\begin{aligned}
 								\frac{\partial u(x,t)}{\partial t} = -u(x,t) + \int_{\Omega} w(|x-y|)f(u(y,t)-\kappa) \, dy, & \quad (x, t) \; {\rm in} \; \Omega \times M, \\
@@ -111,19 +204,19 @@
 
 						<div class="equation-container">
 							<div class="equation">
-								<p>The initial condition \( u_0 \) is given by</p>
+								<p style="font-size:120%;">The initial condition \( u_0 \) is given by</p>
 								\[
 								u_0 = u(x,0) = A_{0}e^{ \left( - x^2 / \sigma_{0}^{2} \right)}
 								\]
 							</div>
 							<p class="equation-label">(2)</p>
 						</div>
-						<p>And the boundary conditions are periodic.</p>
-						<p>\(M = [0, T]\) defines the time interval for the activity integration.</p>
+<!--						<p>And the boundary conditions are periodic.</p>-->
+<!--						<p>\(M = [0, T]\) defines the time interval for the activity integration.</p>-->
 
 						<div class="equation-container">
 							<div class="equation">
-								<p>The oscillatory connectivity function \( w \) is given by</p>
+								<p style="font-size:120%;">The oscillatory connectivity function \( w \) is given by</p>
 								<div>
 									\[
 									w_{osc}(x) = A_{osc}e^{-b \vert c x \vert} (b \sin \vert c x \vert + \cos (c x)).
@@ -137,26 +230,101 @@
 				</section>
 
 
-
 				<section>
 					<h3 class="slide-title">PINN for Amari Equation</h3>
 					<div class="slide-content">
 						<img src="figures/pinn.png" alt="PINN Schematic" width="90%">
-						<p class="caption">Schematic of a PINN for solving the neural field equation.</p>
+						<p style="font-size:50%; margin-top: 1cm;">
+						<ul>
+							<li>Implemented in PyTorch.</li>
+							<li>A fully connected feed-forward NN with two hidden layers and 40 neurons in each layer.</li>
+							<li>tanh as the activation function because it satisfies the smoothness requirements for PINNs.</li>
+							<li>L-BFGS optimizer with 0.01 learning rate.</li>
+						</ul>
+						</p>
 					</div>
 				</section>
+
+
+				<section>
+					<h3 class="slide-title">The loss function</h3>
+					<div class="slide-content">
+							<ul>
+								<li>Learning takes place by <strong>minimizing a loss function</strong> which depends on the governing equation and the initial conditions:</li>
+							</ul>
+						<img src="figures/lossf.png" alt="PINN Schematic" width="90%">
+							<p style="font-size:50%; margin-top: 1cm;">
+							<ul>
+								<li>Use of <strong>FFTs</strong>  provides the <strong>periodic boundary conditions</strong> in \( x\), so no the need to include
+									them in the loss function.</li>
+							</ul>
+							</p>
+					</div>
+				</section>
+
+
+				<section>
+					<h3 class="slide-title">The training data set</h3>
+					<div class="slide-content">
+<!--						<p style="font-size:70%; margin-top: 1cm;"> The training data set consists of two parts:-->
+						<p style="font-size:60%; margin-top: 1cm; margin-bottom: 1cm;">The inputs \((x, t)\) to the neural network are the coordinates of the training points:</p>
+							<ul>
+								<li>500 initial points \( (x^{ini}_i,0)\) uniformly sampled at \(t = 0 \) .</li>
+								<li>10000 collocation points \( (x^{f}_t,t^{f}_t)\), uniformly sampled in the equation domain.</li>
+							</ul>
+<!--						</p>-->
+					</div>
+				</section>
+
+<!--				<section>-->
+<!--					<h3 class="slide-title">Results</h3>-->
+<!--					<div class="slide-content">-->
+<!--						<img src="figures/results.png" alt="Results" width="90%">-->
+<!--						<p class="caption">Localized activity pattern or bump solution of the Amari equation (1).-->
+<!--							The approximation by the PINN and the respective approximation error (the difference between-->
+<!--							the PINN solution and the one obtained by the forward Euler method) are shown for the time-->
+<!--							interval \(M=[0,1]\) (a, b) and for snapshots at times \(t=0\) and \(t=1\) (c, d).-->
+<!--							The initial condition at time \(t=0\) is given by (2) with \(A_0=0.9\) and \( \sigma_0=0.07\).-->
+<!--							The connectivity function is (3) with \(A_{osc}=10\), \(b=0.7\) and \(c=24\).-->
+<!--							Threshold \(\kappa=0.4\).</p>-->
+<!--					</div>-->
+<!--				</section>-->
 
 				<section>
 					<h3 class="slide-title">Results</h3>
 					<div class="slide-content">
-						<img src="figures/results.png" alt="Results" width="90%">
-						<p class="caption">Localized activity pattern or bump solution of the Amari equation.
-							The approximation by the PINN and the respective approximation error (the difference between
-							the PINN solution and the one obtained by the forward Euler method) are shown for the time
-							interval \(M=[0,1]\) (a, b) and for snapshots at times \(t=0\) and \(t=1\) (c, d).
-							The initial condition at time \(t=0\) is given by \eqref{u_0} with \(A_0=0.9\) and \( \sigma_0=0.07\).
-							The connectivity function is \eqref{krenel_scaled} with \(A_{osc}=10\), \(b=0.7\) and \(c=24\).
-							Threshold \(\kappa=0.4\).</p>
+						<div class="twocolumn_result">
+							<div>
+							  <img src="figures/results_a.png" alt="Results" width="120%">
+							</div>
+							<div>
+								<p style="font-size:50%; margin-top: 2cm;">
+									Left: Bump solution after 500 iterations.</p>
+								<p style="font-size:50%; margin-top: 1cm;">
+									The approximation error is the difference between the PINN solution and the one obtained by the forward Euler method.</p>
+							</div>
+						</div>
+					</div>
+				</section>
+
+
+				<section>
+					<h3 class="slide-title">Results</h3>
+					<div class="slide-content">
+						<div class="twocolumn_result">
+							<div>
+							  <img src="figures/results_b.png" alt="Results" width="120%">
+							</div>
+							<div>
+								<p style="font-size:50%; margin-top: 2cm;">
+									 The relative L2 error between the PINN solution and the approximation obtained by the forward Euler method is 0.37%.
+<!--									<strong>(d)</strong> Snapshot at time \(t=1\).-->
+<!--								<p style="font-size:50%; margin-top: 1cm;">-->
+<!--									The initial condition at time \(t=0\) is given by (2) with \(A_0=0.9\) and \( \sigma_0=0.07\). <br>-->
+<!--									The connectivity function is (3) with \(A_{osc}=10\), \(b=0.7\) and \(c=24\).<br>-->
+<!--									Threshold \(\kappa=0.4\).</p>-->
+							</div>
+						</div>
 					</div>
 				</section>
 
@@ -165,11 +333,11 @@
 					<h3 class="slide-title">Future work</h3>
 					<div class="slide-content">
 						<ul>
-						  <li>Add a normalization layer to mitigate the restriction imposed by the tanh activation function.</li>
-						  <li>Adjust hyperparameters (e.g., number of layers, neurons, learning rate) for improved solution accuracy.</li>
-						  <li>Handle NFEs with inputs, leveraging PINN's transfer learning.</li>
-						  <li>Address the inverse problem, inferring NFE parameters from potentially noisy data.</li>
-						  <li>Extend the study to NFEs in two or more spatial dimensions or on surfaces with complex geometries.</li>
+							<li>Mitigate the restriction imposed by the tanh function (e.g., add a normalization layer).</li>
+						  	<li>Adjust hyperparameters (e.g., number of layers, neurons, learning rate) for better accuracy.</li>
+						  	<li>NFEs with inputs (!), leveraging PINN's transfer learning.</li>
+						  	<li>Inverse problem: inferring NFE parameters from potentially noisy data.</li>
+						  	<li>NFEs in two or more spatial dimensions or on surfaces with complex geometries.</li>
 						</ul>
 					</div>
 				</section>
@@ -205,6 +373,7 @@
 			// - https://revealjs.com/config/
 			Reveal.initialize({
 				hash: true,
+				slideNumber: 'c/t',
 
 				// Learn about plugins: https://revealjs.com/plugins/
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]

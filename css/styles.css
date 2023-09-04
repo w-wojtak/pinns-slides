@@ -13,21 +13,28 @@
            text-align: left;
         }
 
+        .twocolumn_result {
+           display: grid;
+           grid-template-columns: 2fr 1fr;
+           grid-gap: 20px;
+           text-align: left;
+        }
+
         .twocolumn h3 {
           font-size: 1.0em; /* Adjust the font size as needed */
         }
 
         .twocolumn ul {
-          font-size: 0.7em; /* Adjust the font size as needed */
+          font-size: 0.6em; /* Adjust the font size as needed */
         }
 
         .twocolumn ul li {
-          margin-bottom: 10px; /* Adjust the margin as needed to increase spacing */
+          margin-bottom: 15px; /* Adjust the margin as needed to increase spacing */
         }
 
 
         .title-slide {
-            font-size: 18px;
+            font-size: 16px;
         }
 
         .title {
@@ -36,17 +43,18 @@
         }
 
         .author {
-            font-size: 20px;
+            font-size: 24px;
             margin-bottom: 5px;
         }
 
+
         .affiliation {
-            font-size: 10px;
+            font-size: 12px;
             margin-bottom: 1px;
         }
 
         .email {
-            font-size: 13px;
+            font-size: 14px;
             margin-bottom: 5px;
         }
 
@@ -56,7 +64,7 @@
         }
 
         .small-font {
-            font-size: 11px; /* Adjust the font size as needed */
+            font-size: 14px; /* Adjust the font size as needed */
         }
 
         .equation-container {
