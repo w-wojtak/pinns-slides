@@ -149,13 +149,17 @@
 								<ul>
 									<li>Designed to solve problems involving <strong>Partial Differential Equations (PDEs).</strong></li>
 									<li>The idea: <strong>add differential equations into the loss function</strong> when training the network.</li>
-									<li>Consist of two parts: a surrogate network and a residual network.</li>
+<!--									<li>Consist of two parts: a surrogate network and a residual network.</li>-->
+									<li>Leverages <strong>automatic differentiation</strong> (known as algorithmic differentiation or AutoDiff).</li>
+									<li>Solve different kinds of problems such as integer-order PDEs, fractional PDEs, stochastic PDEs and integrodifferential equations (IDEs). </li>
 <!--									<li>Consist of two parts: a deep learning network called an approximator or-->
 <!--										a surrogate network, and a residual network encoding the governing PDEs.</li>-->
 <!--									<li>The surrogate network is trained to provide an approximate solution-->
 <!--										at a given point in the simulation domain (also called collocation point).</li>-->
 <!--									<li>The residual network receives the output of the surrogate network and-->
 <!--										calculates a residual value (also called loss function).</li>-->
+
+
 								</ul>
 					</div>
 				</section>
@@ -247,6 +251,21 @@
 					</div>
 				</section>
 
+				<section>
+					<h3 class="slide-title">PINNs and IDEs</h3>
+					<div class="slide-content">
+						<p style="font-size:50%; margin-top: 1cm;">
+						<ul>
+							<li>For the state-of-the-art PINN methods, <strong>integral discretization</strong> is a key prerequisite <br>
+								in order that IDEs can be transformed into ordinary differential equations (ODEs).</li>
+							<li>Integral discretization inevitably introduces <strong>discretization and truncation errors</strong>.</li>
+							<li>Possible solution: PINNs with auxiliary outputs (A-PINNs) which approximate <br> the integrals in the governing equation.</li>
+							<li>The integral term in the Amari equation is a spatial convolution and as such can be<br> efficiently computed using <strong>FFTs</strong>.</li>
+						</ul>
+						</p>
+					</div>
+				</section>
+
 
 				<section>
 					<h3 class="slide-title">PINN for Amari Equation</h3>
@@ -260,6 +279,20 @@
 							<li>L-BFGS optimizer with 0.01 learning rate.</li>
 						</ul>
 						</p>
+					</div>
+				</section>
+
+
+				<section>
+					<h3 class="slide-title">The training data set</h3>
+					<div class="slide-content">
+<!--						<p style="font-size:70%; margin-top: 1cm;"> The training data set consists of two parts:-->
+						<p style="font-size:60%; margin-top: 1cm; margin-bottom: 1cm;">The inputs \((x, t)\) to the neural network are the coordinates of the training points:</p>
+							<ul>
+								<li>500 initial points \( (x^{ini}_i,0)\) uniformly sampled at \(t = 0 \) .</li>
+								<li>10000 collocation points \( (x^{f}_t,t^{f}_t)\), uniformly sampled in the equation domain.</li>
+							</ul>
+<!--						</p>-->
 					</div>
 				</section>
 
@@ -281,18 +314,7 @@
 				</section>
 
 
-				<section>
-					<h3 class="slide-title">The training data set</h3>
-					<div class="slide-content">
-<!--						<p style="font-size:70%; margin-top: 1cm;"> The training data set consists of two parts:-->
-						<p style="font-size:60%; margin-top: 1cm; margin-bottom: 1cm;">The inputs \((x, t)\) to the neural network are the coordinates of the training points:</p>
-							<ul>
-								<li>500 initial points \( (x^{ini}_i,0)\) uniformly sampled at \(t = 0 \) .</li>
-								<li>10000 collocation points \( (x^{f}_t,t^{f}_t)\), uniformly sampled in the equation domain.</li>
-							</ul>
-<!--						</p>-->
-					</div>
-				</section>
+
 
 <!--				<section>-->
 <!--					<h3 class="slide-title">Results</h3>-->
@@ -353,7 +375,7 @@
 						<ul>
 							<li>Mitigate the restriction imposed by the tanh function (e.g., add a normalization layer).</li>
 						  	<li>Adjust hyperparameters (e.g., number of layers, neurons, learning rate) for better accuracy.</li>
-						  	<li><strong>NFEs with inputs (!)</strong>, leveraging PINN's transfer learning.</li>
+						  	<li><strong>NFEs with inputs (!)</strong>, leveraging PINNs' transfer learning.</li>
 						  	<li><strong>Inverse problem</strong>: inferring NFE parameters from potentially noisy data.</li>
 						  	<li><strong>NFEs in two or more spatial dimensions</strong> or on surfaces with complex geometries.</li>
 						</ul>
@@ -365,10 +387,10 @@
 					<h3 class="slide-title">References</h3>
 					<div class="slide-content">
 						<ul>
-							<li>Amari, S. I. (1977). <strong> Dynamics of pattern formation in lateral-inhibition type neural fields. Biological cybernetics, 27(2), 77-87.</strong> </li>
-							<li>Raissi, M., Perdikaris, P., & Karniadakis, G. E. (2019). <strong> Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations. Journal of Computational physics, 378, 686-707.</strong></li>
-							<li> Cuomo, S., Di Cola, V. S., Giampaolo, F., Rozza, G., Raissi, M., & Piccialli, F. (2022). <strong> Scientific machine learning through physics–informed neural networks: Where we are and what’s next. Journal of Scientific Computing, 92(3), 88. </strong></li>
-							<li> Markidis, S. (2021). <strong> The old and the new: Can physics-informed deep-learning replace traditional linear solvers? Frontiers in big Data, 4, 669097. </strong></li>
+							<li>Amari, S. I. (1977). <strong> Dynamics of pattern formation in lateral-inhibition type neural fields</strong>. Biological Cybernetics, 27(2), 77-87.</li>
+							<li>Raissi, M., Perdikaris, P., & Karniadakis, G. E. (2019). <strong> Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations</strong>. Journal of Computational Physics, 378, 686-707.</li>
+							<li>Cuomo, S., Di Cola, V. S., Giampaolo, F., Rozza, G., Raissi, M., & Piccialli, F. (2022). <strong> Scientific machine learning through physics–informed neural networks: Where we are and what’s next.</strong> Journal of Scientific Computing, 92(3), 88.</li>
+							<li>Markidis, S. (2021). <strong> The old and the new: Can physics-informed deep-learning replace traditional linear solvers?</strong> Frontiers in Big Data, 4, 669097. </li>
 						</ul>
 					</div>
 				</section>
