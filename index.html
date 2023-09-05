@@ -24,25 +24,28 @@
 				<section class="title-slide">
 					<h1 class="title">Solving Neural Field Equations using Physics Informed Neural Networks</h1>
 					<div class="author">
-						<p style="font-size:110%; "><strong>Weronika Wojtak</strong></p>
-						<p class="email"><a href="mailto:w.wojtak@dei.uminho.pt">w.wojtak@dei.uminho.pt</a></p>
+						<p style="font-size:110%; "><strong>Weronika Wojtak</strong><sup style="font-size:60%; ">1, 2, 3 ✉️</sup></p>
+<!--						<p class="email"><a href="mailto:w.wojtak@dei.uminho.pt">w.wojtak@dei.uminho.pt</a></p>-->
 					</div>
-					<div class="affiliation">
-						<p class="small-font">Research Centre Algoritmi, University of Minho, Guimarães, Portugal</p>
-						<p class="small-font">Research Centre of Mathematics, University of Minho, Guimarães, Portugal</p>
-						<p class="small-font">Centro de Computação Gráfica, Guimarães, Portugal</p>
-					</div>
+<!--					<div class="affiliation">-->
+<!--						<p class="small-font">Research Centre Algoritmi, University of Minho, Guimarães, Portugal</p>-->
+<!--						<p class="small-font">Research Centre of Mathematics, University of Minho, Guimarães, Portugal</p>-->
+<!--						<p class="small-font">Centro de Computação Gráfica, Guimarães, Portugal</p>-->
+<!--					</div>-->
 					<div class="author">
-						<p style="font-size:110%; "><strong>Estela Bicho</strong></p>
+						<p style="font-size:110%; "><strong>Estela Bicho</strong><sup style="font-size:60%; ">1</sup></p>
 					</div>
-					<div class="affiliation">
-						<p class="small-font">Research Centre Algoritmi, University of Minho, Guimarães, Portugal</p>
-					</div>
+<!--					<div class="affiliation">-->
+<!--						<p class="small-font">Research Centre Algoritmi, University of Minho, Guimarães, Portugal</p>-->
+<!--					</div>-->
 					<div class="author">
-						<p style="font-size:110%; "><strong>Wolfram Erlhagen</strong></p>
+						<p style="font-size:110%; "><strong>Wolfram Erlhagen</strong><sup  style="font-size:60%; ">2</sup></p>
 					</div>
 					<div class="affiliation">
-						<p class="small-font">Research Centre of Mathematics, University of Minho, Guimarães, Portugal</p>
+						<p class="small-font"><sup style="font-size:90%; ">1</sup> Research Centre Algoritmi, University of Minho, Guimarães, Portugal</p>
+						<p class="small-font"><sup style="font-size:90%; ">2</sup> Research Centre of Mathematics, University of Minho, Guimarães, Portugal</p>
+						<p class="small-font"><sup style="font-size:90%; ">3</sup> Centro de Computação Gráfica, Guimarães, Portugal</p>
+						<p class="email"><a href="mailto:w.wojtak@dei.uminho.pt"> ✉️ w.wojtak@dei.uminho.pt</a></p>
 					</div>
 				</section>
 
@@ -52,14 +55,14 @@
 					<h3 class="slide-title">Neural Field Equations</h3>
 					<div class="slide-content">
 								<ul>
-									<li>Describe the large-scale spatio-temporal dynamics of neuronal populations in the cortex.</li>
+									<li>Describe the <strong>large-scale spatio-temporal dynamics<br> of neuronal populations</strong> in the cortex.</li>
 									<li>Typically formalized by integro-differential equations (IDEs):</li>
 									<div class="equation">
 										\[
 										\frac{\partial u(x,t)}{\partial t} = -u(x,t) + \int_{\Omega} w(|x-y|)f(u(y,t)-\kappa) \, dy
 										\]
 									</div>
-									<li>Applications in neuroscience and robotics.</li>
+									<li>Applications in <strong>neuroscience</strong> and <strong>robotics</strong>.</li>
 									<li>TODO: add images</li>
 								</ul>
 					</div>
@@ -82,19 +85,33 @@
 				<section>
 					<h3 class="slide-title">Neural Field Equations</h3>
 					  <div class="slide-content">
-						  <p style="font-size:55%; margin-bottom: 1cm;"> In general, no closed-form expressions can be
-							  found for these patterns<br> so the solutions must be <strong>approximated numerically.</strong></p>
 
-						  <p style="font-size:55%; margin-bottom: 1cm;"> This requires significant computational effort,<br>
-							  mostly due to the discretization of the <strong>spatial convolution term.</strong></p>
+						  <ul>
+							  <li>In general, no closed-form expressions can be
+							  found for these patterns<br> so the solutions must be <strong>approximated numerically.</strong></li>
+							  <li>This requires significant computational effort,<br>
+							  mostly due to the discretization of the <strong>spatial convolution term.</strong></li>
+							  <li>Many approaches proposed, including <strong>collocation techniques, <br>
+							  Galerkin schemes, low-rank methods, quadrature rules.</strong></li>
+							  <li>One of the most efficient ways: use of <strong>Fast Fourier Transforms (FFTs).</strong></li>
+							  <li>Motivated by <strong>the rise of scientific machine learning (SciML)</strong>,<br>
+							  we look for a new approach to solving this kind of equation.</li>
+						  </ul>
 
-						  <p style="font-size:55%; margin-bottom: 1cm;"> Many approaches proposed, including <strong>collocation techniques, <br>
-							  Galerkin schemes, low-rank methods, quadrature rules.</strong></p>
 
-						  <p style="font-size:55%; margin-bottom: 1cm;"> One of the most efficient ways: use of <strong>Fast Fourier Transforms (FFTs).</strong></p>
+<!--						  <p style="font-size:55%; margin-bottom: 1cm;"> In general, no closed-form expressions can be-->
+<!--							  found for these patterns<br> so the solutions must be <strong>approximated numerically.</strong></p>-->
 
-						  <p style="font-size:55%; margin-bottom: 2cm;"> Motivated by <strong>the rise of scientific machine learning (SciML)</strong>,<br>
-							  we look for a new approach to solving this kind of equation.</p>
+<!--						  <p style="font-size:55%; margin-bottom: 1cm;"> This requires significant computational effort,<br>-->
+<!--							  mostly due to the discretization of the <strong>spatial convolution term.</strong></p>-->
+
+<!--						  <p style="font-size:55%; margin-bottom: 1cm;"> Many approaches proposed, including <strong>collocation techniques, <br>-->
+<!--							  Galerkin schemes, low-rank methods, quadrature rules.</strong></p>-->
+
+<!--						  <p style="font-size:55%; margin-bottom: 1cm;"> One of the most efficient ways: use of <strong>Fast Fourier Transforms (FFTs).</strong></p>-->
+
+<!--						  <p style="font-size:55%; margin-bottom: 2cm;"> Motivated by <strong>the rise of scientific machine learning (SciML)</strong>,<br>-->
+<!--							  we look for a new approach to solving this kind of equation.</p>-->
 
 					  </div>
 				</section>
@@ -127,11 +144,12 @@
 
 
 				<section>
-					<h3 class="slide-title">Physics informed neural networks (PINNs)</h3>
+					<h3 class="slide-title">Physics informed neural networks</h3>
 					<div class="slide-content">
 								<ul>
-									<li>Designed to solve problems involving Partial Differential Equations (PDEs).</li>
-									<li>The idea is very simple: add the known differential equations directly into the loss function when training the neural network.</li>
+									<li>Designed to solve problems involving <strong>Partial Differential Equations (PDEs).</strong></li>
+									<li>The idea: <strong>add differential equations into the loss function</strong> when training the network.</li>
+									<li>Consist of two parts: a surrogate network and a residual network.</li>
 <!--									<li>Consist of two parts: a deep learning network called an approximator or-->
 <!--										a surrogate network, and a residual network encoding the governing PDEs.</li>-->
 <!--									<li>The surrogate network is trained to provide an approximate solution-->
@@ -143,14 +161,14 @@
 				</section>
 
 				<section>
-					<h3 class="slide-title">Physics informed neural networks (PINNs)</h3>
+					<h3 class="slide-title">Physics informed neural networks</h3>
 					<div class="slide-content">
 <!--						Consist of two parts:-->
 								<ul>
 <!--									<li>Consist of two parts: a deep learning network called an approximator or-->
 <!--										a surrogate network, and a residual network encoding the governing PDEs.</li>-->
 									<li>The surrogate network is trained to provide an approximate solution
-										at a given point in the simulation domain (also called collocation point).</li>
+										at given collocation points.</li>
 									<li>The residual network receives the output of the surrogate network and
 										calculates a residual value (also called loss function).</li>
 								</ul>
@@ -160,7 +178,7 @@
 
 
 				<section>
-					<h3 class="slide-title">Physics informed neural networks (PINNs)</h3>
+					<h3 class="slide-title">Physics informed neural networks</h3>
 					<div class="slide-content">
 						<p style="font-size:55%;"> PINNs can solve differential equations expressed in the form:</p>
 									<div class="equation">
@@ -335,9 +353,9 @@
 						<ul>
 							<li>Mitigate the restriction imposed by the tanh function (e.g., add a normalization layer).</li>
 						  	<li>Adjust hyperparameters (e.g., number of layers, neurons, learning rate) for better accuracy.</li>
-						  	<li>NFEs with inputs (!), leveraging PINN's transfer learning.</li>
-						  	<li>Inverse problem: inferring NFE parameters from potentially noisy data.</li>
-						  	<li>NFEs in two or more spatial dimensions or on surfaces with complex geometries.</li>
+						  	<li><strong>NFEs with inputs (!)</strong>, leveraging PINN's transfer learning.</li>
+						  	<li><strong>Inverse problem</strong>: inferring NFE parameters from potentially noisy data.</li>
+						  	<li><strong>NFEs in two or more spatial dimensions</strong> or on surfaces with complex geometries.</li>
 						</ul>
 					</div>
 				</section>
