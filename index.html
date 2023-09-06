@@ -125,7 +125,7 @@
 									<li>Relies on <strong>statistical patterns</strong> in the data.</li>
 									<li>Depends on <strong>large amounts of labelled data</strong>.</li>
 									<li><strong>May lack interpretability</strong>, considered as a "black box" in some cases.</li>
-									<li>Many frameworks and libraries for <strong>easier and faster implementation</strong>.</li>
+<!--									<li>Many frameworks and libraries for <strong>easier and faster implementation</strong>.</li>-->
 									<li>Applications: e.g. image recognition, natural language processing, recommendation engines.</li>
 								</ul>
 					</div>
@@ -135,9 +135,30 @@
 									<li>Integrates <strong>physical principles</strong> into ML process.</li>
 									<li>Can handle situations with <strong>limited or no data</strong>.</li>
 									<li><strong>Interpretability</strong>: incorporates prior knowledge about the system's behaviour.</li>
-									<li>Often involves <strong>custom implementation</strong>.</li>
+<!--									<li>Often involves <strong>custom implementation</strong>.</li>-->
 									<li>Applications: e.g. solving differential equations, inverse problems, simulating physical phenomena.</li>
 								</ul>
+					</div>
+				  </div>
+				</section>
+
+
+								<section>
+				  <div class="twocolumn">
+					<div>
+					  <h3>Traditional ML</h3>
+<!--								<ul>-->
+									<p style="font-size:50%;"><strong>Many frameworks and libraries</strong>.</p>
+									<img src="figures/hf.png" alt="hugging face" width="90%">
+<!--								</ul>-->
+					</div>
+					<div>
+					  <h3>Scientific ML</h3>
+<!--								<ul>-->
+									<p style="font-size:50%;"><strong>Custom implementations</strong>, some frameworks exist.</p>
+									<img src="figures/deepxde.png" alt="PINN Schematic" width="90%">
+									<img src="figures/sciann.png" alt="PINN Schematic" width="90%">
+<!--								</ul>-->
 					</div>
 				  </div>
 				</section>
@@ -151,16 +172,21 @@
 									<li>The idea: <strong>add differential equations into the loss function</strong> when training the network.</li>
 <!--									<li>Consist of two parts: a surrogate network and a residual network.</li>-->
 									<li>Leverages <strong>automatic differentiation</strong> (known as algorithmic differentiation or AutoDiff).</li>
-									<li>Solve different kinds of problems such as integer-order PDEs, fractional PDEs, stochastic PDEs and integrodifferential equations (IDEs). </li>
-<!--									<li>Consist of two parts: a deep learning network called an approximator or-->
-<!--										a surrogate network, and a residual network encoding the governing PDEs.</li>-->
-<!--									<li>The surrogate network is trained to provide an approximate solution-->
-<!--										at a given point in the simulation domain (also called collocation point).</li>-->
-<!--									<li>The residual network receives the output of the surrogate network and-->
-<!--										calculates a residual value (also called loss function).</li>-->
-
-
+									<li>Different kinds of problems: integer-order PDEs, fractional PDEs, stochastic PDEs and integrodifferential equations (IDEs). </li>
+<!--									<li>Introduced in 2019:</li>-->
+<!--									<img src="figures/paper.png" alt="PINN Schematic" width="70%">-->
 								</ul>
+					</div>
+				</section>
+
+
+				<section>
+					<h3 class="slide-title">Physics informed neural networks</h3>
+					<div class="slide-content">
+						<p style="font-size:50%;">Introduced in 2019:</p>
+							<img src="figures/paper.png" alt="PINN Schematic" width="60%">
+						<img src="figures/citations.png" alt="PINN Schematic" width="50%">
+
 					</div>
 				</section>
 
@@ -195,11 +221,13 @@
 						<p style="font-size:55%;"> defined on the domain \( \Omega \subset \mathbb{R} \) with the boundary
 							\( \partial \Omega\), where:</p>
 							<ul>
-								<li>\(z=[x_1, \ldots, x_{d-1}; t]\) indicates the space-time coordinate vector,</li>
-								<li>\(u\) represents the unknown solution,</li>
-								<li>\(\gamma\) are the parameters of the governing equation,</li>
-								<li>\(f\) is the function identifying the data of the problem,</li>
-								<li> \( \mathcal{F}\) is the non-linear differential operator.</li>
+								<li>\(z=[x_1, \ldots, x_{d-1}; t]\): the space-time coordinate vector,</li>
+								<li>\(u\): the unknown solution,</li>
+								<li>\(\gamma\): the parameters of the governing equation,</li>
+								<li>\(f\): the function identifying the data of the problem,</li>
+								<li> \( \mathcal{F}\): the non-linear differential operator.</li>
+								<li> \( \mathcal{B}\): arbitrary initial or boundary conditions,</li>
+								<li> \(g\):  the boundary function.</li>
 							</ul>
 					</div>
 				</section>
