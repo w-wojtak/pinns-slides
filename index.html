@@ -55,15 +55,25 @@
 					<h3 class="slide-title">Neural Field Equations</h3>
 					<div class="slide-content">
 								<ul>
-									<li>Describe the <strong>large-scale spatio-temporal dynamics<br> of neuronal populations</strong> in the cortex.</li>
-									<li>Typically formalized by integro-differential equations (IDEs):</li>
+									<li>Describe the <strong>large-scale dynamics of neuronal populations</strong> in the cortex.</li>
+									<li style="margin-bottom: 1cm;">Typically formalized by integro-differential equations (IDEs):</li>
 									<div class="equation">
 										\[
 										\frac{\partial u(x,t)}{\partial t} = -u(x,t) + \int_{\Omega} w(|x-y|)f(u(y,t)-\kappa) \, dy
 										\]
 									</div>
+									 <center> <img src="figures/Neuralfield.jpg" width="50%"></center>
+
+								</ul>
+					</div>
+				</section>
+
+				<section>
+					<h3 class="slide-title">Neural Field Equations</h3>
+					<div class="slide-content">
+								<ul>
 									<li>Applications in <strong>neuroscience</strong> and <strong>robotics</strong>.</li>
-									<li>TODO: add images</li>
+									<img src="figures/examples.png" width="100%">
 								</ul>
 					</div>
 				</section>
@@ -72,8 +82,8 @@
 				<section>
 					<h3 class="slide-title">Neural Field Equations</h3>
 					  <div class="slide-content">
-						  <p style="font-size:50%; margin-bottom: 2cm;"> The mathematical analysis: the existence and stability of <strong>localized activation patterns</strong>,<br>
-							  believed to represent a basis for cortical information processing.</p>
+						  <p style="font-size:50%; margin-bottom: 2cm;"> The mathematical analysis: the existence and stability of <strong>localized activation patterns (bumps)</strong>.
+							  </p>
 						<video width="640" height="360" controls>
 						  <source src="Amari_input_bump.mp4" type="video/mp4">
 						  Your browser does not support the video tag.
@@ -87,15 +97,14 @@
 					  <div class="slide-content">
 
 						  <ul>
-							  <li>In general, no closed-form expressions can be
-							  found for these patterns<br> so the solutions must be <strong>approximated numerically.</strong></li>
-							  <li>This requires significant computational effort,<br>
-							  mostly due to the discretization of the <strong>spatial convolution term.</strong></li>
-							  <li>Many approaches proposed, including <strong>collocation techniques, <br>
-							  Galerkin schemes, low-rank methods, quadrature rules.</strong></li>
-							  <li>One of the most efficient ways: use of <strong>Fast Fourier Transforms (FFTs).</strong></li>
+							  <li>In general, no closed-form expressions for these patterns, the solutions<br> must be <strong>approximated numerically.</strong></li>
+							  <li>Significant computational effort, mostly due to the discretization<br>
+								  of the <strong>spatial convolution term.</strong></li>
+							  <li>Proposed approaches: <strong>collocation techniques, <br>
+							  Galerkin schemes, low-rank methods, quadrature rules</strong>, etc.</li>
+							  <li>One of the most efficient ways: <strong>Fast Fourier Transforms (FFTs).</strong></li>
 							  <li>Motivated by <strong>the rise of scientific machine learning (SciML)</strong>,<br>
-							  we look for a new approach to solving this kind of equation.</li>
+							  we look for a new approaches to solving this kind of equation.</li>
 						  </ul>
 
 
