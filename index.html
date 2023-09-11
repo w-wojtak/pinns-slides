@@ -59,7 +59,7 @@
 									<li style="margin-bottom: 1cm;">Typically formalized by integro-differential equations (IDEs):</li>
 									<div class="equation">
 										\[
-										\frac{\partial u(x,t)}{\partial t} = -u(x,t) + \int_{\Omega} w(|x-y|)f(u(y,t)-\kappa) \, dy
+										\dfrac{\partial u(x,t)}{\partial t} = -u(x,t) + \int_{\Omega} w(|x-y|)f(u(y,t)-\kappa) \, dy
 										\]
 									</div>
 									 <center> <img src="figures/Neuralfield.jpg" width="50%"></center>
@@ -118,11 +118,26 @@
 							  <li>One of the most efficient ways: <strong>Fast Fourier Transforms (FFTs).</strong></li>
 							  <img src="figures/fft_trap.png" alt="hugging face" width="100%">
 <!--							  <img src="figures/fft.png" alt="hugging face" width="90%">-->
-							  <li>Motivated by <strong>the rise of scientific machine learning (SciML)</strong>,<br>
-							  we look for a new approaches to solving this kind of equation.</li>
+<!--							  <li>Motivated by <strong>the rise of scientific machine learning (SciML)</strong>,<br>-->
+<!--							  we look for a new approaches to solving this kind of equation.</li>-->
 						  </ul>
 					  </div>
 				</section>
+
+
+				<section>
+					<h3 class="slide-title">Motivation</h3>
+					  <div class="slide-content">
+
+						  <p style="font-size:60%; ">
+							  Motivated by <strong>the rise of scientific machine learning (SciML)</strong>,<br>
+							  we look for new approaches to solving NFEs.
+						  </p>
+
+							  <img src="figures/ml.jpeg" alt="ml everywhere" width="50%">
+					  </div>
+				</section>
+
 
 
 
@@ -193,8 +208,8 @@
 					<h3 class="slide-title">Physics informed neural networks</h3>
 					<div class="slide-content">
 						<p style="font-size:50%;">Introduced in 2019:</p>
-							<img src="figures/paper.png" alt="PINN Schematic" width="60%">
-						<img src="figures/citations.png" alt="PINN Schematic" width="50%">
+							<img src="figures/paper.png" alt="PINN Schematic" width="50%">
+						<img src="figures/citations.png" alt="PINN Schematic" width="40%">
 
 					</div>
 				</section>
@@ -211,7 +226,7 @@
 									<li>The residual network receives the output of the surrogate network and
 										calculates a residual value (also called loss function).</li>
 								</ul>
-						 <img src="figures/pinn_gen.png" width="100%">
+						 <img src="figures/pinn_gen.png" width="95%">
 					</div>
 				</section>
 
@@ -372,7 +387,7 @@
 					<div class="slide-content">
 						<div class="twocolumn_result">
 							<div>
-							  <img src="figures/results_a.png" alt="Results" width="120%">
+							  <img src="figures/results_a.png" alt="Results" width="90%">
 							</div>
 							<div>
 								<p style="font-size:50%; margin-top: 2cm;">
@@ -390,7 +405,7 @@
 					<div class="slide-content">
 						<div class="twocolumn_result">
 							<div>
-							  <img src="figures/results_b.png" alt="Results" width="120%">
+							  <img src="figures/results_b.png" alt="Results" width="80%">
 							</div>
 							<div>
 								<p style="font-size:50%; margin-top: 2cm;">
